@@ -1,0 +1,17 @@
+{
+  "name":"pMysql",
+  "version":"0.0.0-1",
+  "repositiory":"joshterrell805/pMysql",
+  "main":"lib/PMysql.js",
+  "scripts": {
+    "test": "vows `find test/ -name '*.js'`"
+  },
+  "dependencies": {
+    "bluebird": "*",
+    "mysql": "*"
+  },
+  "devDependencies": {
+    "vows": "*",
+    "sinon": "*"
+  }
+}
