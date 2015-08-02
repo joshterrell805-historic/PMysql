@@ -11,6 +11,7 @@
     "mysql": "*"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "sinon": "*"
   }
 }

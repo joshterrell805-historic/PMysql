@@ -4,8 +4,6 @@ var assert = require('assert'),
 var PMysql = require('lib/PMysql');
 
 describe('pQuery', function() {
-  // TODO change method tests to not use instance
-
   var self, err, rows;
 
   beforeEach(function() {
