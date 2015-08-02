@@ -2,7 +2,7 @@ var assert = require('assert');
 
 var PMysql = require('lib/PMysql');
 
-describe('constructor', function() {
+describe('PMysql (constructor)', function() {
   it('should set the config', function() {
     var pMysql = new PMysql(null);
     assert.strictEqual(pMysql.config, null);

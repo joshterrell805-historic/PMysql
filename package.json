@@ -4,7 +4,7 @@
   "repositiory":"joshterrell805/pMysql",
   "main":"lib/PMysql.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha `find test/ -name '*.js'`"
+    "test": "node_modules/mocha/bin/mocha `find test/ -name '*-test.js'`"
   },
   "dependencies": {
     "bluebird": "*",
