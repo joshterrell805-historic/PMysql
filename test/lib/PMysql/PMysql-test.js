@@ -3,4 +3,5 @@ describe('PMysql', function() {
   require('./start');
   require('./pEnd');
   require('./pQuery');
+  require('./assertRunning');
 });
