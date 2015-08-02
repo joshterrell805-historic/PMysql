@@ -13,13 +13,14 @@ describe('pQuery', function() {
     self = {
       assertRunning: sinon.spy(),
       pool: {
-        query: function(callback) {
+        query: sinon.spy(function() {
+          var callback = arguments[arguments.length-1];
           if (err) {
             callback(err);
           } else {
             callback(null, rows);
           }
-        },
+        }),
       },
     };
   });
@@ -48,6 +49,13 @@ describe('pQuery', function() {
     return PMysql.prototype.pQuery.call(self)
     .then(function(res) {
       assert.strictEqual(res, rows);
+    });
+  });
+
+  it('should pass arguments to `this.pool.query`', function() {
+    return PMysql.prototype.pQuery.call(self, 1, 2, 3, 4, 5)
+    .then(function() {
+      assert(self.pool.query.calledWith(1, 2, 3, 4, 5));
     });
   });
 });
