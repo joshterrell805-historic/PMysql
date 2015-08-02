@@ -4,14 +4,13 @@
   "repositiory":"joshterrell805/pMysql",
   "main":"lib/PMysql.js",
   "scripts": {
-    "test": "vows `find test/ -name '*.js'`"
+    "test": "node_modules/mocha/bin/mocha `find test/ -name '*.js'`"
   },
   "dependencies": {
     "bluebird": "*",
     "mysql": "*"
   },
   "devDependencies": {
-    "vows": "*",
-    "sinon": "*"
+    "mocha": "*"
   }
 }
