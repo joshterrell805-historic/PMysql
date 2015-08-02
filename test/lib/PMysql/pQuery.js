@@ -1,9 +1,9 @@
-var assert = require('assert');
+var assert = require('assert'),
+    sinon = require('sinon');
 
 var PMysql = require('lib/PMysql');
 
 describe('pQuery', function() {
-  // TODO reject on not initialized or ended
   // TODO change method tests to not use instance
 
   var self, err, rows;
@@ -11,6 +11,7 @@ describe('pQuery', function() {
   beforeEach(function() {
     err = rows = null;
     self = {
+      assertRunning: sinon.spy(),
       pool: {
         query: function(callback) {
           if (err) {
@@ -21,6 +22,13 @@ describe('pQuery', function() {
         },
       },
     };
+  });
+
+  it('should `this.assertRunning`', function() {
+    return PMysql.prototype.pQuery.call(self)
+    .then(function() {
+      assert.strictEqual(self.assertRunning.callCount, 1);
+    });
   });
 
   it('should reject to the error of the query', function() {
