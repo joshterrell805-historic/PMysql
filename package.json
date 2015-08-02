@@ -1,7 +1,7 @@
 {
-  "name":"pMysql",
+  "name":"PMysql",
   "version":"0.0.0-1",
-  "repositiory":"joshterrell805/pMysql",
+  "repositiory":"joshterrell805/PMysql",
   "main":"lib/PMysql.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha `find test/ -name '*-test.js'`"
