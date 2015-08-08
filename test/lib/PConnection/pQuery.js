@@ -10,7 +10,10 @@ describe('pQuery', function() {
   beforeEach(function() {
     err = rows = null;
     self = {
-      assertNotReleased: sinon.spy(),
+      released: false,
+      assertNotReleased: sinon.spy(function() {
+        assert(!this.released, 'released');
+      }),
       connection: {
         query: sinon.spy(function() {
           var callback = arguments[arguments.length-1];
@@ -25,9 +28,13 @@ describe('pQuery', function() {
   });
 
   it('should `this.assertNotReleased`', function() {
+    self.released = true;
     return PConnection.prototype.pQuery.call(self)
     .then(function() {
+      throw new Error('expected exception');
+    }, function(e) {
       assert.strictEqual(self.assertNotReleased.callCount, 1);
+      assert.strictEqual(e.message, 'released');
     });
   });
 

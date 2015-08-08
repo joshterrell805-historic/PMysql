@@ -9,7 +9,10 @@ describe('pQuery', function() {
   beforeEach(function() {
     err = rows = null;
     self = {
-      assertRunning: sinon.spy(),
+      running: true,
+      assertRunning: sinon.spy(function() {
+        assert(this.running, 'not running');
+      }),
       pool: {
         query: sinon.spy(function() {
           var callback = arguments[arguments.length-1];
@@ -24,9 +27,13 @@ describe('pQuery', function() {
   });
 
   it('should `this.assertRunning`', function() {
+    self.running = false;
     return PMysql.prototype.pQuery.call(self)
     .then(function() {
+      throw new Error('expected exception');
+    }, function(e) {
       assert.strictEqual(self.assertRunning.callCount, 1);
+      assert.strictEqual(e.message, 'not running');
     });
   });
 
