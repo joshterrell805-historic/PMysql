@@ -60,7 +60,24 @@ describe('pQuery', function() {
   it('should pass arguments to `this.pool.query`', function() {
     return PMysql.prototype.pQuery.call(self, 1, 2, 3, 4, 5)
     .then(function() {
-      assert(self.pool.query.calledWith(1, 2, 3, 4, 5));
+      assert.strictEqual(self.pool.query.callCount, 1);
+      assert.strictEqual(self.pool.query.args[0].length, 6);
+      assert.deepEqual(
+          self.pool.query.args[0].splice(0, self.pool.query.args[0].length - 1),
+          [1, 2, 3, 4, 5]);
+      assert(self.pool.query.args[0][0] instanceof Function);
+    });
+  });
+
+  it('should not pass last argument if it is undefined (chaining)', function() {
+    return PMysql.prototype.pQuery.call(self, 1, undefined).return()
+    .then(PMysql.prototype.pQuery.bind(self, 2))
+    .then(function() {
+      assert.strictEqual(self.pool.query.callCount, 2);
+      assert.strictEqual(self.pool.query.args[0].length, 2);
+      assert.strictEqual(self.pool.query.args[0][0], 1);
+      assert.strictEqual(self.pool.query.args[1].length, 2);
+      assert.strictEqual(self.pool.query.args[1][0], 2);
     });
   });
 });
