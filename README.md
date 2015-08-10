@@ -1,6 +1,11 @@
 ## PMysql
-A promise interface around [node-mysql](https://github.com/felixge/node-mysql/)
-with support for nested transactions.
+A mysql library with a promise interface and support for nested transactions.
+
+#### Installation
+
+```sh
+npm install pmysql
+```
 
 #### Running Tests
 
@@ -36,7 +41,7 @@ create table some_table (val int);
 ```
 
 ```js
-var PMysql = require('PMysql'),
+var PMysql = require('pmysql'),
     assert = require('assert'),
     genny = require('genny');
 

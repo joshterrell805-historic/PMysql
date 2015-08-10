@@ -1,8 +1,14 @@
 {
-  "name":"PMysql",
-  "version":"0.0.0-1",
+  "name":"pmysql",
+  "version":"0.0.0-6",
   "repositiory":"joshterrell805/PMysql",
   "main":"lib/PMysql.js",
+  "keywords": [
+    "nested",
+    "transaction",
+    "promise",
+    "mysql"
+  ],
   "config": {
     "blanket": {
       "pattern": "lib",

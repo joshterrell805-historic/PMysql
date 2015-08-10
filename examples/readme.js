@@ -1,4 +1,4 @@
-var PMysql = require('PMysql'),
+var PMysql = require('pmysql'),
     assert = require('assert'),
     genny = require('genny');
 
