@@ -1,41 +1,3 @@
-## PMysql
-A promise interface around [node-mysql](https://github.com/felixge/node-mysql/)
-with support for nested transactions.
-
-#### Running Tests
-
-For normal mocha output:
-
-```sh
-npm install
-npm test
-```
-
-To generate `coverage.html` in the root directory:
-```sh
-npm install
-npm test -- coverage
-```
-
-#### Example
-
-The following example uses [genny](https://github.com/spion/genny) to clean up
-the promises. See the [acceptance tests](test/acceptance/transactions.js) for
-examples without generators.
-
-This example is in examples/readme.js.
-You can run it via `node --harmony examples/readme.js`.
-
-You'll need to either specify your mysql credentials via environment variables
-as shown below, or edit the file to include them.
-
-You'll also need a table called `some_table` with the column `val` of type int.
-
-```sql
-create table some_table (val int);
-```
-
-```js
 var PMysql = require('PMysql'),
     assert = require('assert'),
     genny = require('genny');
@@ -135,4 +97,3 @@ function* main() {
     yield pMysql.pEnd();
   }
 }
-```
