@@ -8,4 +8,5 @@ describe('acceptance', function() {
   }
 
   require('./basic');
+  require('./transactions');
 });
