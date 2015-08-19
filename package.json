@@ -1,7 +1,11 @@
 {
   "name":"pmysql",
-  "version":"0.0.0-6",
-  "repositiory":"joshterrell805/PMysql",
+  "version":"0.0.0-9",
+  "license": "MIT",
+  "description": "A mysql library with a promise interface and support for nested transactions.",
+  "author": "Josh Terrell",
+  "homepage": "https://github.com/joshterrell805/PMysql",
+  "repositiory":  "joshterrell805/PMysql",
   "main":"lib/PMysql.js",
   "keywords": [
     "nested",
